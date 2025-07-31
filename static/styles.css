@@ -1,0 +1,476 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 900px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.chat-header h1 {
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+}
+
+.chat-header p {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.requirements-panel {
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 15px 20px;
+    min-height: 50px;
+    transition: all 0.3s ease;
+}
+
+.requirements-header {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.requirements-hint {
+    color: #718096;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.completed-requirements {
+    color: #38a169;
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.missing-requirements {
+    color: #e53e3e;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.homes-count {
+    color: #667eea;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 15px;
+    display: flex;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.bot-message {
+    justify-content: flex-start;
+}
+
+.user-message {
+    justify-content: flex-end;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.bot-message .message-content {
+    background: #e2e8f0;
+    color: #2d3748;
+    border-bottom-left-radius: 5px;
+}
+
+.user-message .message-content {
+    background: #667eea;
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+.message-content ul {
+    margin: 10px 0 10px 20px;
+}
+
+.message-content li {
+    margin-bottom: 5px;
+}
+
+.input-container {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    gap: 10px;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 25px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+#messageInput:focus {
+    border-color: #667eea;
+}
+
+#sendButton {
+    padding: 12px 24px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+#sendButton:hover {
+    background: #5a67d8;
+}
+
+#sendButton:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background: #e2e8f0;
+    border-radius: 18px;
+    border-bottom-left-radius: 5px;
+    max-width: 80px;
+}
+
+.typing-dots {
+    display: flex;
+    gap: 3px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: #a0aec0;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+    0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+    40% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.funeral-home-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 12px 0;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid #667eea;
+}
+
+.funeral-home-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.funeral-home-card h3 {
+    color: #2d3748;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.funeral-home-card p {
+    color: #4a5568;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.rating {
+    color: #f6ad55;
+    font-weight: bold;
+}
+
+.price {
+    color: #38a169;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Quick Actions */
+.quick-actions {
+    background: #edf2f7 !important;
+    border: 1px solid #cbd5e0 !important;
+    border-radius: 12px !important;
+    padding: 15px !important;
+    margin-top: 10px !important;
+}
+
+.quick-actions-header {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.quick-actions-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.quick-action-btn {
+    background: white;
+    border: 2px solid #e2e8f0;
+    color: #4a5568;
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+}
+
+.quick-action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quick-action-btn.satisfied {
+    border-color: #38a169;
+    color: #38a169;
+}
+
+.quick-action-btn.satisfied:hover {
+    background: #38a169;
+    color: white;
+}
+
+.quick-action-btn.more-options {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.quick-action-btn.more-options:hover {
+    background: #667eea;
+    color: white;
+}
+
+.quick-action-btn.different {
+    border-color: #ed8936;
+    color: #ed8936;
+}
+
+.quick-action-btn.different:hover {
+    background: #ed8936;
+    color: white;
+}
+
+.quick-action-btn.location {
+    border-color: #4299e1;
+    color: #4299e1;
+}
+
+.quick-action-btn.location:hover {
+    background: #4299e1;
+    color: white;
+}
+
+.quick-action-btn.service {
+    border-color: #9f7aea;
+    color: #9f7aea;
+}
+
+.quick-action-btn.service:hover {
+    background: #9f7aea;
+    color: white;
+}
+
+.quick-action-btn.timeframe {
+    border-color: #f56565;
+    color: #f56565;
+}
+
+.quick-action-btn.timeframe:hover {
+    background: #f56565;
+    color: white;
+}
+
+.quick-action-btn.preference {
+    border-color: #48bb78;
+    color: #48bb78;
+}
+
+.quick-action-btn.preference:hover {
+    background: #48bb78;
+    color: white;
+}
+
+/* Enhanced Send Button */
+.send-icon {
+    margin-right: 5px;
+}
+
+#sendButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: "...";
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { color: transparent; text-shadow: .25em 0 0 transparent, .5em 0 0 transparent; }
+    40% { color: white; text-shadow: .25em 0 0 transparent, .5em 0 0 transparent; }
+    60% { text-shadow: .25em 0 0 white, .5em 0 0 transparent; }
+    80%, 100% { text-shadow: .25em 0 0 white, .5em 0 0 white; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        height: 95vh;
+        border-radius: 10px;
+    }
+    
+    .chat-header {
+        padding: 15px;
+    }
+    
+    .chat-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .requirements-panel {
+        padding: 12px 15px;
+        font-size: 0.8rem;
+    }
+    
+    .message-content {
+        max-width: 90%;
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+    
+    .funeral-home-card {
+        padding: 15px;
+        margin: 8px 0;
+    }
+    
+    .funeral-home-card h3 {
+        font-size: 1rem;
+    }
+    
+    .quick-actions-buttons {
+        flex-direction: column;
+    }
+    
+    .quick-action-btn {
+        min-width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .input-container {
+        padding: 15px;
+    }
+    
+    #messageInput {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+    
+    .chat-header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .requirements-panel {
+        padding: 10px 12px;
+    }
+    
+    .quick-action-btn {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+}

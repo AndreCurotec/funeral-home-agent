@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funeral Home Finder - AI Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="chat-header">
+            <h1>🕊️ Funeral Home Finder</h1>
+            <p>AI-powered assistance to find the perfect funeral home for your needs</p>
+        </div>
+        
+        <div class="requirements-panel" id="requirementsStatus">
+            <div class="requirements-header">Getting Started...</div>
+            <div class="requirements-hint">I'll help you find funeral homes by collecting your location, service type, timeframe, and preference.</div>
+        </div>
+        
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be dynamically added here -->
+            </div>
+            
+            <div class="input-container">
+                <input type="text" id="messageInput" placeholder="Type your message here..." autocomplete="off">
+                <button id="sendButton">
+                    <span class="send-icon">📤</span>
+                    Send
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="deploy-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
