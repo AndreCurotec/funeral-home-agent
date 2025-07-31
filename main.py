@@ -29,15 +29,9 @@ ENVIRONMENT = os.getenv("ENVIRONMENT", "development")  # "development" or "produ
 FRONTEND_URL = os.getenv("FRONTEND_URL", "")  # Set this in production
 
 if ENVIRONMENT == "production":
-    # Production environment - specific origins
-    cors_origins = []
-    if FRONTEND_URL:
-        cors_origins.append(FRONTEND_URL)
-    # Always allow Netlify domains in production
-    cors_origins.extend([
-        "https://*.netlify.app",
-        "https://netlify.app",
-    ])
+    # Production environment - single Render deployment
+    # Since frontend and backend are served from same domain, no CORS restrictions needed
+    cors_origins = ["*"]
 else:
     # Development environment - allow local origins
     cors_origins = [
@@ -50,10 +44,15 @@ else:
         "*"  # Allow all in development
     ]
 
+print(f"🚀 Starting in {ENVIRONMENT} mode")
+print(f"🌐 CORS origins: {cors_origins}")
+print(f"🔗 Frontend URL: {FRONTEND_URL}")
+print(f"🏠 Render URL: {os.getenv('RENDER_EXTERNAL_URL', 'Not set')}")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins,
-    allow_credentials=True,
+    allow_credentials=False,  # Not needed for this application
     allow_methods=["*"],
     allow_headers=["*"],
 )

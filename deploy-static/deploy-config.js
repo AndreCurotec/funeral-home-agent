@@ -3,10 +3,10 @@
 
 const DEPLOYMENT_CONFIG = {
     // Replace with your actual Render backend URL
-    BACKEND_URL: 'https://YOUR-RENDER-APP-NAME.onrender.com',
+    BACKEND_URL: 'https://funeral-home-agent.onrender.com',
     
     // Replace with your actual Netlify frontend URL  
-    FRONTEND_URL: 'https://YOUR-NETLIFY-APP-NAME.netlify.app'
+    FRONTEND_URL: 'https://funeral-home-finder.netlify.app'
 };
 
 // Auto-detect environment and return appropriate base URL

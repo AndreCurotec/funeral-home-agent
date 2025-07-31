@@ -12,15 +12,14 @@ const DEPLOYMENT_CONFIG = {
 // Auto-detect environment and return appropriate base URL
 function getApiBaseUrl() {
     const isLocal = window.location.hostname === 'localhost' || 
-                   window.location.hostname === '127.0.0.1' ||
-                   window.location.hostname === '';
+                   window.location.hostname === '127.0.0.1';
     
     if (isLocal) {
         // Local development - use same domain
         return '';
     } else {
-        // Production deployment - use configured backend URL
-        return DEPLOYMENT_CONFIG.BACKEND_URL;
+        // Production deployment from Render - use same domain (no CORS needed)
+        return '';
     }
 }
 
